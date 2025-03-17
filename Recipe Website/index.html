@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinch of Yum - Delicious Recipes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #B9B28A;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-image: url('image.png');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Big Shoulders Stencil', sans-serif;
+        }
+        .recipe-card {
+            background-color: #F8F3D9;
+            border: 1px solid #eee;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .recipe-card .card-title {
+            font-family: 'Georgia', serif;
+            color: #d35400;
+            font-size: 1.8em;
+        }
+        .recipe-card .card-text strong {
+            color: black;
+        }
+        .recipe-card ul li, .recipe-card ol li {
+            line-height: 1.6;
+        }
+        #categories {
+            background-color: #F8F3D9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        #categories h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        #categories .list-group-item {
+            color: rgb(0, 0, 0);
+            background-color: #F8F3D9;
+            transition: background-color 0.3s;
+        }
+        #categories .list-group-item:hover {
+            color: whitesmoke;
+            background-color: rgb(0, 0, 0);
+        }
+        #contact {
+            padding: 30px;
+            margin-top: 20px;
+        }
+        #contact h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        #contact .form-control {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #contact .btn-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+            transition: background-color 0.3s;
+        }
+        #contact .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand">Pinch of Yum</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#recipes">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Submit Recipe</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1 style="font-weight: bolder; font-size: 100px;">Pinch of Yum - Delicious Recipes</h1>
+        <p style="font-size: larger; font-weight: bold;">Discover a variety of mouthwatering recipes, from quick meals to healthy options, and indulgent treats to suit every occasion.</p>
+    </header>
+
+    <section id="recipes" class="container mt-4">
+        <h2>Featured Recipes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselTomato" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Tomato Pasta 1.png" class="d-block w-100" alt="Creamy Tomato Pasta with fresh basil and parmesan cheese.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Tomato Pasta 2.png" class="d-block w-100" alt="Close up of Creamy Tomato Pasta.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselTomato" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselTomato" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Creamy Tomato Pasta</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 lb pasta of choice</li>
+                            <li>1 tbsp olive oil</li>
+                            <li>Additional ingredients as required</li>
+                        </ul>
+                        <p class="card-text"><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Cook pasta according to package instructions.</li>
+                            <li>Heat olive oil in a large skillet.</li>
+                            <li>Add other ingredients as per the recipe directions.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselQuinoa" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Quinoa Salad 1.png" class="d-block w-100" alt="Quinoa Salad with Roasted Vegetables and feta cheese.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Quinoa Salad 2.png" class="d-block w-100" alt="Close up of Quinoa Salad with RoastedVegetables.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselQuinoa" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselQuinoa" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Quinoa Salad with Roasted Vegetables</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 cup quinoa</li>
+                            <li>2 cups vegetable broth</li>
+                            <li>Additional ingredients as required</li>
+                        </ul>
+                        <p class="card-text"><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Cook quinoa using vegetable broth for added flavor.</li>
+                            <li>Toss vegetables with olive oil and roast until tender.</li>
+                            <li>Combine quinoa and roasted vegetables, mixing thoroughly.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselBites" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Peanut Butter Bites 2.png" class="d-block w-100" alt="Peanut Butter Energy Bites on a plate.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Peanut Butter Bites 1.png" class="d-block w-100" alt="Close up of Peanut Butter Energy Bites.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselBites" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselBites" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Peanut Butter Energy Bites</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 cup rolled oats</li>
+                            <li>1/2 cup peanut butter</li>
+                            <li>Additional ingredients as required</li>
+                        </ul>
+                        <p class="card-text"><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Combine all ingredients in a large bowl.</li>
+                            <li>Mix well until the dough-like consistency forms.</li>
+                            <li>Roll into bite-sized balls and refrigerate.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselChicken" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Lemon Chicken 1.png" class="d-block w-100" alt="Lemon Herb Roasted Chicken with rosemary.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Lemon Chicken 2.png" class="d-block w-100" alt="Close up of Lemon Herb Roasted Chicken.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselChicken" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselChicken" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Lemon Herb Roasted Chicken</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 whole chicken</li>
+                            <li>2 lemons</li>
+                            <li>Additional ingredients as required</li>
+                        </ul>
+                        <p class="card-text"><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Preheat oven to 375°F (190°C).</li>
+                            <li>Place lemon slices inside and on top of the chicken.</li>
+                            <li>Roast for the recommended time based on chicken size.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselSmoothie" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Green Smoothie 1.png" class="d-block w-100" alt="Simple Green Smoothie with spinach and banana.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Green Smoothie 2.png" class="d-block w-100" alt="Close up of Simple Green Smoothie.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselSmoothie" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselSmoothie" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Simple Green Smoothie</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 cup spinach</li>
+                            <li>1 banana</li>
+                            <li>Additional ingredients as required</li>
+                        </ul>
+                        <p class="card-text"><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Add spinach and banana to a blender.</li>
+                            <li>Blend until smooth.</li>
+                            <li>Serve immediately for the freshest taste.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <div class="card-body">
+                        <div id="carouselPancakes" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Pancakes 2.png" class="d-block w-100" alt="Fluffy Pancakes with syrup and berries.">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Pancakes 1.png" class="d-block w-100" alt="Close up of Fluffy Pancakes.">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselPancakes" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPancakes" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <h5 class="card-title">Fluffy Pancakes</h5>
+                        <p class="card-text"><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 cup all-purpose flour</li>
+                            <li>2 tbsp sugar</li>
+                            <li>Additional ingredients as required</li></ul>
+                            <p class="card-text"><strong>Instructions:</strong></p>
+                            <ol>
+                                <li>In a large bowl, whisk together dry ingredients.</li>
+                                <li>Add milk, eggs, and vanilla to the dry mixture.</li>
+                                <li>Cook on a griddle or skillet until golden brown on both sides.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card recipe-card">
+                        <div class="card-body">
+                            <div id="carouselSalad" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="Chicken Salad 1.png" class="d-block w-100" alt="Grilled Chicken Salad with mixed greens and avocado.">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="Chicken Salad 2.png" class="d-block w-100" alt="Close up of Grilled Chicken Salad.">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselSalad" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselSalad" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <h5 class="card-title">Grilled Chicken Salad</h5>
+                            <p class="card-text"><strong>Ingredients:</strong></p>
+                            <ul>
+                                <li>2 grilled chicken breasts</li>
+                                <li>Mixed greens</li>
+                                <li>Additional ingredients as required</li>
+                            </ul>
+                            <p class="card-text"><strong>Instructions:</strong></p>
+                            <ol>
+                                <li>Grill chicken breasts and slice into strips.</li>
+                                <li>Toss mixed greens with your choice of dressing.</li>
+                                <li>Add grilled chicken to the top and serve immediately.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card recipe-card">
+                        <div class="card-body">
+                            <div id="carouselSoup" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="Vegetable Soup 1.png" class="d-block w-100" alt="Hearty Vegetable Soup with carrots and potatoes.">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="Vegetable Soup 2.png" class="d-block w-100" alt="Close up of Hearty Vegetable Soup.">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselSoup" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselSoup" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <h5 class="card-title">Hearty Vegetable Soup</h5>
+                            <p class="card-text"><strong>Ingredients:</strong></p>
+                            <ul>
+                                <li>2 cups vegetable broth</li>
+                                <li>Diced carrots, celery, potatoes</li>
+                                <li>Additional ingredients as required</li>
+                            </ul>
+                            <p class="card-text"><strong>Instructions:</strong></p>
+                            <ol>
+                                <li>Sauté vegetables in olive oil until tender.</li>
+                                <li>Add vegetable broth and bring to a simmer.</li>
+                                <li>Cook until all vegetables are tender and flavors have melded.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card recipe-card">
+                        <div class="card-body">
+                            <div id="carouselBrownies" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="Brownies 1.png" class="d-block w-100" alt="Fudgy Brownies on a plate.">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="Brownies 2.png" class="d-block w-100" alt="Close up of Fudgy Brownies.">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselBrownies" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselBrownies" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <h5 class="card-title">Fudgy Brownies</h5>
+                            <p class="card-text"><strong>Ingredients:</strong></p>
+                            <ul>
+                                <li>1 cup unsalted butter</li>
+                                <li>2 cups sugar</li>
+                                <li>Additional ingredients as required</li>
+                            </ul>
+                            <p class="card-text"><strong>Instructions:</strong></p>
+                            <ol>
+                                <li>Melt butter and chocolate together in a saucepan.</li>
+                                <li>Stir in sugar and eggs.</li>
+                                <li>Pour batter into a greased pan and bake according to recipe time and temperature.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="categories" class="container mt-4">
+            <h2>Recipe Categories</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Quick Meals</li>
+                <li class="list-group-item">Healthy Recipes</li>
+                <li class="list-group-item">Desserts</li>
+                <li class="list-group-item">Vegetarian</li>
+                <li class="list-group-item">Smoothies</li>
+                <li class="list-group-item">Breakfast</li>
+                <li class="list-group-item">Salads</li>
+                <li class="list-group-item">Soups</li>
+                <li class="list-group-item">Mexican</li>
+            </ul>
+        </section>
+        
+        <section id="contact" class="container mt-4">
+            <h2>Submit Your Recipe</h2>
+            <p>We’d love to see your delicious creations! Share your recipe with us.</p>
+            <form id="recipeForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipeName">Recipe Name:</label>
+                    <input type="text" class="form-control" id="recipeName" name="recipeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="ingredients">Ingredients:</label>
+                    <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Instructions:</label>
+                    <textarea class="form-control" id="instructions" name="instructions" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <p>Pinch of Yum - Your Culinary Companion!</p>
+        </section>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>

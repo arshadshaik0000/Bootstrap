@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Knockout Corner - Boxing Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABQK1J3APq9J2rQzYZH0iCe5gF1lXb7ha/d2Djd6rWyn9P1NoF8pX9M" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"rel="stylesheet">
+    <style>
+        main.container.mt-5 {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main.container.mt-5 .row {
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .navbar-brand {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            margin: 0;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        .navbar-nav .nav-item {
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #000000;
+            color: #FBFBFB;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        footer .social-icons i {
+            font-size: 1.5rem;
+            color: #000000;
+            margin: 0 10px;
+        }
+
+        footer .social-icons i:hover {
+            color: #ff0000;
+        }
+
+        .post {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #B4EBE6;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .postL:hover {
+            background-color: #000000;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .post-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .post-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .list-group-item {
+            border: none;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+
+        .sidebar .list-group-item:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .card-img-top {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .sidebar {
+                margin-top: 30px;
+            }
+        }
+
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            color: white;
+            background-color: black;
+            transform: scale(1.05);
+        }
+
+        .card .card-body {
+            height: fit-content;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            transition: top 0.3s ease;
+            padding: 1rem;
+        }
+
+        .card:hover .card-body {
+            top: 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 0, 0);
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <p class="navbar-brand">The Knockout Corner🥊</p>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#blogs" class="nav-link">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <video autoplay muted loop>
+            <source src="boxing_video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to The Knockout Corner</h1>
+            <p class="hero-subtitle">Your source for the latest boxing news and analysis.</p>
+        </div>
+    </div>
+
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row row-cols-1 g-5">
+                    <div class="col">
+                        <div class="card">
+                            <img src="canelomunguia.png" alt="Canelo vs Munguia" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Canelo Alvarez Set to Face Jaime Munguia</h5>
+                                <p class="card-text">Canelo Alvarez and Jaime Munguia will clash in a highly anticipated Mexican showdown on May 4th. This bout promises fireworks!</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                April 25, 2024
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="Tyson Fury VS Oleksandr Usyk.png" alt="Fury vs Usyk" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Tyson Fury vs Oleksandr Usyk: Undisputed Heavyweight Clash</h5>
+                                <p class="card-text">The highly anticipated undisputed heavyweight championship fight between Tyson Fury and Oleksandr Usyk is scheduled for May 18th in Riyadh, Saudi Arabia.</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                April 25, 2024
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="lopez_camacho.png" alt="Lopez vs Camacho" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Teofimo Lopez vs Jose Pedraza: A Tale of Two Styles</h5>
+                                <p class="card-text">Teofimo Lopez and Jose Pedraza will face off in a clash of styles on December 10th. Lopez's aggressive style will be put to the test against Pedraza's technical boxing.</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                November 28, 2023
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="haney_prograis.png" alt="Haney vs Prograis" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Devin Haney Moves Up to Face Regis Prograis</h5>
+                                <p class="card-text">Devin Haney steps up to super lightweight to challenge Regis Prograis for the WBC title. A highly anticipated matchup for boxing fans.</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                December 9, 2023
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="beterbiev_smith.png" alt="Beterbiev vs Smith" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Artur Beterbiev Defends Titles Against Callum Smith</h5>
+                                <p class="card-text">Artur Beterbiev showcased his power against Callum Smith, retaining his light heavyweight titles with a dominant performance.</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                January 13, 2024
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="inoue_tapales.png" alt="Inoue vs Tapales" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">Naoya Inoue Makes History Against Marlon Tapales</h5>
+                                <p class="card-text">Naoya Inoue became the undisputed super bantamweight champion, continuing his dominant run in the boxing world.</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                December 26, 2023
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="sidebar">
+                    <h3>Search</h3>
+                    <div class="search-bar">
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                    <h3>Recent Posts</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Canelo Alvarez Set to Face Jaime Munguia</li>
+                        <li class="list-group-item">Tyson Fury vs Oleksandr Usyk: Undisputed Heavyweight Clash</li>
+                        <li class="list-group-item">Teofimo Lopez vs Jose Pedraza: A Tale of Two Styles</li>
+                        <li class="list-group-item">Devin Haney Moves Up to Face Regis Prograis</li>
+                        <li class="list-group-item">Artur Beterbiev Defends Titles Against Callum Smith</li>
+                        <li class="list-group-item">Naoya Inoue Makes History Against Marlon Tapales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-info" id="contact">
+            <p><strong>Contact Information:</strong></p>
+            <p>Email: contact@knockoutcorner.com</p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 Boxing St, Fight City, FC 12345</p>
+        </div>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 The Knockout Corner. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
